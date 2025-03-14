@@ -1,0 +1,14 @@
+<configuration>
+<!--    <root level="off">-->
+    <root level="warn">
+        <appender-ref ref="sampleAppender"/>
+    </root>
+
+    <logger name="com.farrel.logging" level="trace"/>
+
+    <appender class="ch.qos.logback.core.ConsoleAppender" name="sampleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+</configuration>
