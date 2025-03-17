@@ -1,13 +1,37 @@
 <configuration>
-<!--    <root level="off">-->
+    <!-- <root level="off"> -->
     <root level="warn">
-        <appender-ref ref="sampleAppender"/>
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE"/>
     </root>
 
     <logger name="com.farrel.logging" level="trace"/>
 
-    <appender class="ch.qos.logback.core.ConsoleAppender" name="sampleAppender">
+    <appender class="ch.qos.logback.core.ConsoleAppender" name="CONSOLE">
         <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+<!--    <appender class="ch.qos.logback.core.FileAppender" name="FILE">-->
+<!--        <file>application.log</file>-->
+<!--        <encoder>-->
+<!--            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>-->
+<!--        </encoder>-->
+<!--    </appender>-->
+
+    <appender class="ch.qos.logback.core.rolling.RollingFileAppender" name="FILE">
+        <file>application.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- Rollover daily -->
+            <fileNamePattern>application-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <!-- each file should be at most 100MB, keep 60 days worth of history, but at most 20GB -->
+            <maxFileSize>100MB</maxFileSize>
+            <maxHistory>60</maxHistory> <!-- the maximum number (days) of archive files to keep -->
+            <totalSizeCap>20GB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <!-- <pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern> -->
             <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
