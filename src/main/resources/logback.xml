@@ -9,16 +9,17 @@
 
     <appender class="ch.qos.logback.core.ConsoleAppender" name="CONSOLE">
         <encoder>
-            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        <!-- <pattern>%d{yyyy-MM-dd HH:mm:ss.SSSXXX,Australia/Perth} [%thread] %-5level %logger{36} - %msg%n</pattern> -->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSSXXX} [%thread] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
 
-<!--    <appender class="ch.qos.logback.core.FileAppender" name="FILE">-->
-<!--        <file>application.log</file>-->
-<!--        <encoder>-->
-<!--            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>-->
-<!--        </encoder>-->
-<!--    </appender>-->
+    <!-- <appender class="ch.qos.logback.core.FileAppender" name="FILE"> -->
+    <!--     <file>application.log</file> -->
+    <!--     <encoder>-->
+    <!--         <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern> -->
+    <!--     </encoder> -->
+    <!-- </appender> -->
 
     <appender class="ch.qos.logback.core.rolling.RollingFileAppender" name="FILE">
         <file>application.log</file>
@@ -32,7 +33,7 @@
         </rollingPolicy>
         <encoder>
             <!-- <pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern> -->
-            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
 </configuration>
